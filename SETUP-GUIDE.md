@@ -16,6 +16,11 @@ Welcome! This guide will help you get the One World Impact WordPress theme up an
    - `OWI-One-Line.png` (horizontal wordmark)
    - `OWI-Stacked.png` (stacked wordmark for footer)
 
+**Recommended Logo Sizes:**
+- Main logo (OWL): 200x200px or smaller
+- Horizontal wordmark: 300x100px (max height 100px)
+- Stacked wordmark: 200x300px (max height 300px)
+
 **Don't have images?** Use placeholders temporarily:
 ```
 Copy the image URLs from the original mockup or use placeholder services like:
@@ -158,7 +163,17 @@ If you prefer a custom HTML form, edit `template-contact.php` and replace the sh
 ---
 
 ## �📸 Adding Images
+### Upload Logos (Recommended Method)
+**Via WordPress Customizer:**
+1. Go to **Appearance** > **Customize**
+2. Navigate to **Site Images & Logos**
+3. Upload your logos:
+   - **Main Logo (OWL Icon)** - The circular OWI logo (recommended: 200x200px)
+   - **Wordmark Logo (Horizontal)** - Used next to main logo in header (recommended: max 300x100px)
+   - **Stacked Logo** - Used in footer (recommended: max 200x300px)
+4. Click **Publish**
 
+**Note:** Upload logos through **Customizer > Site Images & Logos** instead of WordPress's built-in Site Identity logo uploader for proper sizing.
 ### Method 1: Direct Upload (Simple)
 1. Copy your images to: `/wp-content/themes/oneworldimpact/assets/images/`
 2. Use exact filenames:
@@ -187,6 +202,12 @@ If you prefer a custom HTML form, edit `template-contact.php` and replace the sh
 - Go to Appearance > Menus
 - Create menu and assign to "Primary Menu" location
 - Make sure pages are published
+
+### Logo too large?
+- **Recommended**: Upload logos via **Appearance > Customize > Site Images & Logos** instead of WordPress's Site Identity logo uploader
+- Logo should be optimized before upload (recommended 200x200px for main logo)
+- The theme automatically constrains logos to proper sizes (54px height for header)
+- If using WordPress's custom logo uploader, the theme CSS will still constrain it, but using the Customizer method is preferred
 
 ### News carousel not working?
 - Make sure you have at least 3 news posts
