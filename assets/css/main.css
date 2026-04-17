@@ -78,9 +78,17 @@ body {
   cursor: pointer;
 }
 
-.menu span.active,
-.menu span.current-menu-item,
-.menu span.current_page_item {
+.menu span a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.menu span.active a,
+.menu span.current-menu-item a,
+.menu span.current_page_item a,
+.menu span.current-menu-parent a,
+.menu span.current-menu-ancestor a {
   color: var(--navy);
   font-weight: 700;
 }

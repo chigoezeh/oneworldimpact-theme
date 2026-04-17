@@ -72,9 +72,9 @@ if ($show_banner) :
  */
 function oneworldimpact_default_menu() {
     echo '<span><a href="' . esc_url(home_url('/')) . '">Home</a></span>';
-    echo '<span class="active">About Us</span>';
-    echo '<span>Projects</span>';
-    echo '<span>News</span>';
-    echo '<span>Partnership</span>';
-    echo '<span>Contact</span>';
+    echo '<span><a href="#">About Us</a></span>';
+    echo '<span><a href="#">Projects</a></span>';
+    echo '<span><a href="#">News</a></span>';
+    echo '<span><a href="#">Partnership</a></span>';
+    echo '<span><a href="#">Contact</a></span>';
 }

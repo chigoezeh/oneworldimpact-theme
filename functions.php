@@ -177,7 +177,27 @@ class OneWorldImpact_Walker_Nav_Menu extends Walker_Nav_Menu {
         $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
         
         $output .= '<span' . $class_names . '>';
+        
+        // Add link if URL exists
+        $atts = array();
+        $atts['title']  = !empty($item->attr_title) ? $item->attr_title : '';
+        $atts['target'] = !empty($item->target) ? $item->target : '';
+        $atts['rel']    = !empty($item->xfn) ? $item->xfn : '';
+        $atts['href']   = !empty($item->url) ? $item->url : '';
+        
+        $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args, $depth);
+        
+        $attributes = '';
+        foreach ($atts as $attr => $value) {
+            if (!empty($value)) {
+                $value = ('href' === $attr) ? esc_url($value) : esc_attr($value);
+                $attributes .= ' ' . $attr . '="' . $value . '"';
+            }
+        }
+        
+        $output .= '<a' . $attributes . '>';
         $output .= apply_filters('the_title', $item->title, $item->ID);
+        $output .= '</a>';
         $output .= '</span>';
     }
     
