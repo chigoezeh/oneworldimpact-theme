@@ -804,6 +804,84 @@ function oneworldimpact_customize_register($wp_customize) {
         'type'     => 'textarea',
     ));
     
+    // ========================================
+    // CONTACT PAGE
+    // ========================================
+    
+    $wp_customize->add_section('contact_page_section', array(
+        'title'       => __('Contact Page', 'oneworldimpact'),
+        'description' => __('Customize the Contact Us page content and form', 'oneworldimpact'),
+        'priority'    => 115,
+    ));
+    
+    // Contact Heading
+    $wp_customize->add_setting('contact_heading', array(
+        'default'           => 'Get in Touch',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('contact_heading', array(
+        'label'    => __('Page Heading', 'oneworldimpact'),
+        'section'  => 'contact_page_section',
+        'type'     => 'text',
+    ));
+    
+    // Contact Description
+    $wp_customize->add_setting('contact_description', array(
+        'default'           => 'Whether you\'re interested in collaborating, learning more about our work, or starting a project, we\'d love to hear from you. Fill out the form or reach us directly.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+    $wp_customize->add_control('contact_description', array(
+        'label'    => __('Description Text', 'oneworldimpact'),
+        'section'  => 'contact_page_section',
+        'type'     => 'textarea',
+    ));
+    
+    // Contact Email
+    $wp_customize->add_setting('contact_email', array(
+        'default'           => 'contact@owi.org',
+        'sanitize_callback' => 'sanitize_email',
+    ));
+    $wp_customize->add_control('contact_email', array(
+        'label'    => __('Email Address', 'oneworldimpact'),
+        'section'  => 'contact_page_section',
+        'type'     => 'email',
+    ));
+    
+    // Contact Phone
+    $wp_customize->add_setting('contact_phone', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('contact_phone', array(
+        'label'       => __('Phone Number (Optional)', 'oneworldimpact'),
+        'section'     => 'contact_page_section',
+        'type'        => 'text',
+        'description' => __('Leave blank to hide phone number', 'oneworldimpact'),
+    ));
+    
+    // Contact Location
+    $wp_customize->add_setting('contact_location', array(
+        'default'           => 'Global / Remote',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('contact_location', array(
+        'label'    => __('Location', 'oneworldimpact'),
+        'section'  => 'contact_page_section',
+        'type'     => 'text',
+    ));
+    
+    // Contact Form Shortcode
+    $wp_customize->add_setting('contact_form_shortcode', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('contact_form_shortcode', array(
+        'label'       => __('Contact Form Shortcode', 'oneworldimpact'),
+        'section'     => 'contact_page_section',
+        'type'        => 'text',
+        'description' => __('Enter your Contact Form 7 shortcode here (e.g., [contact-form-7 id="123"]). Install Contact Form 7 plugin first.', 'oneworldimpact'),
+    ));
+    
     // Footer CTA Section
     $wp_customize->add_section('footer_cta_section', array(
         'title'    => __('Footer CTA Section', 'oneworldimpact'),

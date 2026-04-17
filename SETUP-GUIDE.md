@@ -35,21 +35,42 @@ Copy the image URLs from the original mockup or use placeholder services like:
 3. Select Template: **About Us**
 4. Click **Publish**
 
-### Step 5: Set Homepage as Front Page
+### Step 5: Create Contact Page
+1. Go to **Pages** > **Add New**
+2. Title: "Contact Us"
+3. Select Template: **Contact Us**
+4. Click **Publish**
+5. *(You'll setup the contact form in Step 8)*
+
+### Step 6: Set Homepage as Front Page
 1. Go to **Settings** > **Reading**
 2. Under "Your homepage displays", select **A static page**
 3. Choose your "Home" page as **Homepage**
 4. Click **Save Changes**
 
-### Step 6: Create Navigation Menu
+### Step 7: Create Navigation Menu
 1. Go to **Appearance** > **Menus**
 2. Create a new menu called "Primary Menu"
 3. Add these pages:
    - Home
    - About Us
-   - (Create placeholder pages for Projects, News, Partnership, Contact)
+   - Contact Us
+   - (Create placeholder pages for Projects, News, Partnership)
 4. Check "Primary Menu" under "Display location"
 5. Click **Save Menu**
+
+### Step 8: Setup Contact Form
+1. Install **Contact Form 7** plugin:
+   - Go to **Plugins** > **Add New**
+   - Search for "Contact Form 7"
+   - Click **Install Now**, then **Activate**
+2. Go to **Contact** > **Contact Forms**
+3. Click **Add New** to create a form or use the default one
+4. Copy the shortcode (looks like `[contact-form-7 id="123" title="Contact form 1"]`)
+5. Go to **Appearance** > **Customize** > **Contact Page**
+6. Paste the shortcode in the **Contact Form Shortcode** field
+7. Update your contact email, phone, and location
+8. Click **Publish**
 
 **🎉 Done! Visit your site to see the theme in action.**
 
@@ -78,7 +99,65 @@ The homepage automatically displays your 3 latest news items.
 
 ---
 
-## 📸 Adding Images
+## � Setting Up Contact Page
+
+### Quick Setup with Contact Form 7 (Recommended)
+
+**Step 1: Install Contact Form 7**
+1. Go to **Plugins** > **Add New**
+2. Search for "Contact Form 7"
+3. Click **Install Now**, then **Activate**
+
+**Step 2: Create/Edit Contact Form**
+1. Go to **Contact** > **Contact Forms** in WordPress admin
+2. You can use the default form or create a new one
+3. **Recommended form fields** (edit the Form tab):
+   ```
+   <div class="form-row">
+   <label> First Name
+       [text* first-name] </label>
+   <label> Last Name
+       [text* last-name] </label>
+   </div>
+
+   <label> Email Address
+       [email* your-email] </label>
+
+   <label> Company / Organization (Optional)
+       [text company] </label>
+
+   <label> Message
+       [textarea* your-message placeholder "Tell us about your project or inquiry..."] </label>
+
+   [submit "Submit Inquiry"]
+   ```
+4. In the **Mail** tab, set your email address where form submissions will be sent
+5. Copy the shortcode at the top (e.g., `[contact-form-7 id="123"]`)
+
+**Step 3: Add Shortcode to Theme**
+1. Go to **Appearance** > **Customize**
+2. Click **Contact Page**
+3. Paste the shortcode in **Contact Form Shortcode** field
+4. Update contact information:
+   - **Email Address**: Your public contact email
+   - **Phone Number**: Optional, leave blank to hide
+   - **Location**: e.g., "Global / Remote" or your office location
+5. Click **Publish**
+
+### Alternative: Use Another Form Plugin
+The contact page template supports any plugin that uses shortcodes:
+- **WPForms** - Drag & drop form builder
+- **Gravity Forms** - Advanced form builder
+- **Ninja Forms** - Flexible form solution
+
+Just paste the form's shortcode in **Appearance > Customize > Contact Page > Contact Form Shortcode**.
+
+### Custom HTML Form
+If you prefer a custom HTML form, edit `template-contact.php` and replace the shortcode area with your form code.
+
+---
+
+## �📸 Adding Images
 
 ### Method 1: Direct Upload (Simple)
 1. Copy your images to: `/wp-content/themes/oneworldimpact/assets/images/`
@@ -124,11 +203,16 @@ Use this checklist to make sure everything is set up:
 - [ ] Logo images uploaded (`OWL-logo.png`, `OWI-One-Line.png`, `OWI-Stacked.png`)
 - [ ] Homepage created with "Homepage" template
 - [ ] About page created with "About Us" template
+- [ ] Contact page created with "Contact Us" template
+- [ ] Contact Form 7 plugin installed and configured
+- [ ] Contact form shortcode added to Customizer
+- [ ] Contact information updated (email, phone, location)
 - [ ] Homepage set as static front page in Settings > Reading
-- [ ] Primary menu created and assigned
+- [ ] Primary menu created and assigned (including Contact page)
 - [ ] At least 3 news posts created (optional)
 - [ ] All images optimized and uploaded
 - [ ] Tested on mobile and desktop
+- [ ] Contact form tested and working
 - [ ] Customizer content reviewed and updated
 
 ---
@@ -149,7 +233,6 @@ Once basic setup is complete:
    - Projects page
    - News archive page
    - Partnership page
-   - Contact page with form
 
 4. **Test Everything**
    - Test on multiple browsers (Chrome, Firefox, Safari, Edge)

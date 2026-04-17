@@ -17,7 +17,7 @@ get_header();
     <div>
       <div class='kicker'><?php echo esc_html(get_theme_mod('about_hero_kicker', 'About OWI')); ?></div>
       <h2 style='font-size:56px;line-height:1.03;margin:0 0 18px'><?php echo esc_html(get_theme_mod('about_hero_heading', 'Bridging Vision and Execution for Global Good')); ?></h2>
-      <p style='font-size:19px;color:var(--ink);max-width:720px'><?php echo esc_html(get_theme_mod('about_hero_text1', 'Our World Impact (OWI) is an international social impact and development management organization committed to turning visionary community projects into sustainable, accountable, and life-changing realities.')); ?></p>
+      <p style='font-size:19px;color:var(--ink);max-width:720px'><?php echo esc_html(get_theme_mod('about_hero_text1', 'One World Impact (OWI) is an international social impact and development management organization committed to turning visionary community projects into sustainable, accountable, and life-changing realities.')); ?></p>
       <p style='font-size:17px;color:var(--ink);max-width:720px'><?php echo esc_html(get_theme_mod('about_hero_text2', 'We operate at the intersection of financial integrity, technical execution, and community empowerment, ensuring that every project we manage delivers measurable impact and adheres to high global accountability standards.')); ?></p>
     </div>
     <?php 
