@@ -9,10 +9,20 @@
  */
 
 get_header();
+
+// Get hero background settings
+$hero_bg_type = get_theme_mod('hero_background_type', 'gradient');
+$hero_bg_image = get_theme_mod('hero_background_image', '');
+
+// Build inline style based on background type
+$hero_style = '';
+if ($hero_bg_type === 'image' && !empty($hero_bg_image)) {
+    $hero_style = 'style="background: linear-gradient(90deg, rgba(11,31,58,.78) 0%, rgba(11,31,58,.42) 38%, rgba(11,31,58,.12) 100%), url(' . esc_url($hero_bg_image) . ') center/cover;"';
+}
 ?>
 
 <!-- Hero Section -->
-<section class='hero'>
+<section class='hero' <?php echo $hero_style; ?>>
   <div class='hero-inner'>
     <div>
       <div class='eyebrow'><?php echo esc_html(get_theme_mod('hero_eyebrow', 'Global operations • sustainable development • accountable delivery')); ?></div>

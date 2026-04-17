@@ -437,6 +437,33 @@ function oneworldimpact_customize_register($wp_customize) {
         'type'     => 'url',
     ));
     
+    // Hero Background Type
+    $wp_customize->add_setting('hero_background_type', array(
+        'default'           => 'gradient',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('hero_background_type', array(
+        'label'    => __('Background Type', 'oneworldimpact'),
+        'section'  => 'hero_section',
+        'type'     => 'radio',
+        'choices'  => array(
+            'gradient' => __('Gradient (Default)', 'oneworldimpact'),
+            'image'    => __('Background Image', 'oneworldimpact'),
+        ),
+    ));
+    
+    // Hero Background Image
+    $wp_customize->add_setting('hero_background_image', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'hero_background_image', array(
+        'label'       => __('Background Image', 'oneworldimpact'),
+        'section'     => 'hero_section',
+        'settings'    => 'hero_background_image',
+        'description' => __('Recommended size: 1920x680px or larger. Only used when "Background Image" is selected above.', 'oneworldimpact'),
+    )));
+    
     // Metrics Section
     $wp_customize->add_section('metrics_section', array(
         'title'    => __('Metrics Section', 'oneworldimpact'),
