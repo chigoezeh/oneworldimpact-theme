@@ -29,6 +29,14 @@ body {
   line-height: 1.5;
 }
 
+/* Top Banner */
+.top-banner {
+  padding: 14px 10%;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
 /* Navigation */
 .nav {
   display: flex;

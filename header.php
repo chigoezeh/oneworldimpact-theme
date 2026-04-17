@@ -18,6 +18,19 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<?php 
+// Top Banner
+$show_banner = get_theme_mod('top_banner_show', true);
+if ($show_banner) :
+    $banner_text = get_theme_mod('top_banner_text', 'Our website is currently being expanded to better showcase our projects, partnerships, and global impact.');
+    $banner_bg = get_theme_mod('top_banner_bg_color', '#0b1f3a');
+    $banner_color = get_theme_mod('top_banner_text_color', '#ffffff');
+    ?>
+    <div class='top-banner' style='background: <?php echo esc_attr($banner_bg); ?>; color: <?php echo esc_attr($banner_color); ?>;'>
+        <?php echo esc_html($banner_text); ?>
+    </div>
+<?php endif; ?>
+
 <div class='nav'>
   <div class='logo-wrap'>
     <?php 

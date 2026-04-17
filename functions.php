@@ -192,6 +192,60 @@ class OneWorldImpact_Walker_Nav_Menu extends Walker_Nav_Menu {
 function oneworldimpact_customize_register($wp_customize) {
     
     // ========================================
+    // TOP BANNER
+    // ========================================
+    
+    $wp_customize->add_section('top_banner_section', array(
+        'title'       => __('Top Banner', 'oneworldimpact'),
+        'description' => __('Customize the banner that appears above the navigation', 'oneworldimpact'),
+        'priority'    => 20,
+    ));
+    
+    // Show/Hide Banner
+    $wp_customize->add_setting('top_banner_show', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('top_banner_show', array(
+        'label'    => __('Show Top Banner', 'oneworldimpact'),
+        'section'  => 'top_banner_section',
+        'type'     => 'checkbox',
+    ));
+    
+    // Banner Text
+    $wp_customize->add_setting('top_banner_text', array(
+        'default'           => 'Our website is currently being expanded to better showcase our projects, partnerships, and global impact.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('top_banner_text', array(
+        'label'    => __('Banner Text', 'oneworldimpact'),
+        'section'  => 'top_banner_section',
+        'type'     => 'text',
+    ));
+    
+    // Background Color
+    $wp_customize->add_setting('top_banner_bg_color', array(
+        'default'           => '#0b1f3a',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'top_banner_bg_color', array(
+        'label'    => __('Background Color', 'oneworldimpact'),
+        'section'  => 'top_banner_section',
+        'settings' => 'top_banner_bg_color',
+    )));
+    
+    // Text Color
+    $wp_customize->add_setting('top_banner_text_color', array(
+        'default'           => '#ffffff',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'top_banner_text_color', array(
+        'label'    => __('Text Color', 'oneworldimpact'),
+        'section'  => 'top_banner_section',
+        'settings' => 'top_banner_text_color',
+    )));
+    
+    // ========================================
     // SITE IMAGES / LOGOS
     // ========================================
     
