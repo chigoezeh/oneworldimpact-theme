@@ -20,7 +20,10 @@ get_header();
       <p style='font-size:19px;color:var(--ink);max-width:720px'><?php echo esc_html(get_theme_mod('about_hero_text1', 'Our World Impact (OWI) is an international social impact and development management organization committed to turning visionary community projects into sustainable, accountable, and life-changing realities.')); ?></p>
       <p style='font-size:17px;color:var(--ink);max-width:720px'><?php echo esc_html(get_theme_mod('about_hero_text2', 'We operate at the intersection of financial integrity, technical execution, and community empowerment, ensuring that every project we manage delivers measurable impact and adheres to high global accountability standards.')); ?></p>
     </div>
-    <div class='about-visual'></div>
+    <?php 
+    $about_visual = get_theme_mod('about_visual_image', get_template_directory_uri() . '/assets/images/about-visual.jpg');
+    ?>
+    <div class='about-visual' style='background: linear-gradient(90deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.12)), url(<?php echo esc_url($about_visual); ?>) center top/cover;'></div>
   </div>
 </section>
 

@@ -21,19 +21,23 @@
 <div class='nav'>
   <div class='logo-wrap'>
     <?php 
-    // Display custom logo or fallback to images
+    // Get customizer logo images
+    $main_logo = get_theme_mod('logo_main', get_template_directory_uri() . '/assets/images/OWL-logo.png');
+    $wordmark_logo = get_theme_mod('logo_wordmark', get_template_directory_uri() . '/assets/images/OWI-One-Line.png');
+    
+    // Display custom logo or fallback to main logo image
     if (has_custom_logo()) {
         the_custom_logo();
     } else {
         ?>
         <a href="<?php echo esc_url(home_url('/')); ?>">
-            <img src='<?php echo esc_url(get_template_directory_uri() . '/assets/images/OWL-logo.png'); ?>' alt='<?php bloginfo('name'); ?> logo' style='height: 54px;'>
+            <img src='<?php echo esc_url($main_logo); ?>' alt='<?php bloginfo('name'); ?> logo' style='height: 54px;'>
         </a>
         <?php
     }
     ?>
     <a href="<?php echo esc_url(home_url('/')); ?>">
-        <img class='logo-wordmark' src='<?php echo esc_url(get_template_directory_uri() . '/assets/images/OWI-One-Line.png'); ?>' alt='<?php bloginfo('name'); ?>' style='height: 34px;'>
+        <img class='logo-wordmark' src='<?php echo esc_url($wordmark_logo); ?>' alt='<?php bloginfo('name'); ?>' style='height: 34px;'>
     </a>
   </div>
   <div class='menu'>

@@ -191,9 +191,13 @@ get_header();
         wp_reset_postdata();
     else :
         // Fallback content if no news posts exist
+        // Get customizer fallback images
+        $news_img_1 = get_theme_mod('news_fallback_image_1', get_template_directory_uri() . '/assets/images/news-1.jpg');
+        $news_img_2 = get_theme_mod('news_fallback_image_2', get_template_directory_uri() . '/assets/images/news-2.jpg');
+        $news_img_3 = get_theme_mod('news_fallback_image_3', get_template_directory_uri() . '/assets/images/news-3.jpg');
         ?>
         <div class='news-card'>
-          <div class='news-image alt1'><div class='tag'>ANNOUNCEMENT</div></div>
+          <div class='news-image' style='background: linear-gradient(135deg, rgba(11, 31, 58, 0.15), rgba(11, 31, 58, 0.15)), url(<?php echo esc_url($news_img_1); ?>) center/cover;'><div class='tag'>ANNOUNCEMENT</div></div>
           <div class='news-body'>
             <div class='date'>December 15, 2024</div>
             <h3>OWI Signs Strategic Partnership with African Development Bank</h3>
@@ -201,7 +205,7 @@ get_header();
           </div>
         </div>
         <div class='news-card'>
-          <div class='news-image alt2'><div class='tag'>PROJECT UPDATE</div></div>
+          <div class='news-image' style='background: linear-gradient(135deg, rgba(11, 31, 58, 0.15), rgba(11, 31, 58, 0.15)), url(<?php echo esc_url($news_img_2); ?>) center top/cover;'><div class='tag'>PROJECT UPDATE</div></div>
           <div class='news-body'>
             <div class='date'>December 15, 2024</div>
             <h3>Solar Initiative Phase II Reaches Milestone</h3>
@@ -209,7 +213,7 @@ get_header();
           </div>
         </div>
         <div class='news-card'>
-          <div class='news-image alt3'><div class='tag'>INSIGHT</div></div>
+          <div class='news-image' style='background: linear-gradient(135deg, rgba(11, 31, 58, 0.15), rgba(11, 31, 58, 0.15)), url(<?php echo esc_url($news_img_3); ?>) center top/cover;'><div class='tag'>INSIGHT</div></div>
           <div class='news-body'>
             <div class='date'>December 15, 2024</div>
             <h3>The Future of Sovereign Infrastructure Finance</h3>

@@ -192,21 +192,115 @@ class OneWorldImpact_Walker_Nav_Menu extends Walker_Nav_Menu {
 function oneworldimpact_customize_register($wp_customize) {
     
     // ========================================
-    // HOMEPAGE SECTIONS
+    // SITE IMAGES / LOGOS
     // ========================================
     
-    // Hero Section
-    $wp_customize->add_section('hero_section', array(
-        'title'    => __('Hero Section', 'oneworldimpact'),
-        'priority' => 30,
-        'panel'    => 'homepage_panel',
+    $wp_customize->add_section('site_images_section', array(
+        'title'       => __('Site Images & Logos', 'oneworldimpact'),
+        'description' => __('Upload and manage all site images including logos, backgrounds, and fallback images', 'oneworldimpact'),
+        'priority'    => 25,
     ));
+    
+    // Main Logo (OWL logo)
+    $wp_customize->add_setting('logo_main', array(
+        'default'           => get_template_directory_uri() . '/assets/images/OWL-logo.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'logo_main', array(
+        'label'    => __('Main Logo (OWL Icon)', 'oneworldimpact'),
+        'section'  => 'site_images_section',
+        'settings' => 'logo_main',
+        'description' => __('Recommended size: 54x54px. Used in header navigation.', 'oneworldimpact'),
+    )));
+    
+    // Wordmark Logo (One Line)
+    $wp_customize->add_setting('logo_wordmark', array(
+        'default'           => get_template_directory_uri() . '/assets/images/OWI-One-Line.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'logo_wordmark', array(
+        'label'    => __('Wordmark Logo (Horizontal)', 'oneworldimpact'),
+        'section'  => 'site_images_section',
+        'settings' => 'logo_wordmark',
+        'description' => __('Recommended height: 34px. Used next to main logo in header.', 'oneworldimpact'),
+    )));
+    
+    // Stacked Logo
+    $wp_customize->add_setting('logo_stacked', array(
+        'default'           => get_template_directory_uri() . '/assets/images/OWI-Stacked.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'logo_stacked', array(
+        'label'    => __('Stacked Logo (Footer)', 'oneworldimpact'),
+        'section'  => 'site_images_section',
+        'settings' => 'logo_stacked',
+        'description' => __('Recommended height: 72px. Used in footer.', 'oneworldimpact'),
+    )));
+    
+    // About Page Visual
+    $wp_customize->add_setting('about_visual_image', array(
+        'default'           => get_template_directory_uri() . '/assets/images/about-visual.jpg',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'about_visual_image', array(
+        'label'    => __('About Page Hero Background', 'oneworldimpact'),
+        'section'  => 'site_images_section',
+        'settings' => 'about_visual_image',
+        'description' => __('Recommended size: 800x420px. Background image for About page hero section.', 'oneworldimpact'),
+    )));
+    
+    // News Fallback Image 1
+    $wp_customize->add_setting('news_fallback_image_1', array(
+        'default'           => get_template_directory_uri() . '/assets/images/news-1.jpg',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'news_fallback_image_1', array(
+        'label'    => __('News Fallback Image 1', 'oneworldimpact'),
+        'section'  => 'site_images_section',
+        'settings' => 'news_fallback_image_1',
+        'description' => __('Recommended size: 600x220px. Used when no news posts exist or no featured image is set.', 'oneworldimpact'),
+    )));
+    
+    // News Fallback Image 2
+    $wp_customize->add_setting('news_fallback_image_2', array(
+        'default'           => get_template_directory_uri() . '/assets/images/news-2.jpg',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'news_fallback_image_2', array(
+        'label'    => __('News Fallback Image 2', 'oneworldimpact'),
+        'section'  => 'site_images_section',
+        'settings' => 'news_fallback_image_2',
+        'description' => __('Recommended size: 600x220px. Second fallback news image.', 'oneworldimpact'),
+    )));
+    
+    // News Fallback Image 3
+    $wp_customize->add_setting('news_fallback_image_3', array(
+        'default'           => get_template_directory_uri() . '/assets/images/news-3.jpg',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'news_fallback_image_3', array(
+        'label'    => __('News Fallback Image 3', 'oneworldimpact'),
+        'section'  => 'site_images_section',
+        'settings' => 'news_fallback_image_3',
+        'description' => __('Recommended size: 600x220px. Third fallback news image.', 'oneworldimpact'),
+    )));
+    
+    // ========================================
+    // HOMEPAGE SECTIONS
+    // ========================================
     
     // Hero Panel
     $wp_customize->add_panel('homepage_panel', array(
         'title'       => __('Homepage Content', 'oneworldimpact'),
         'description' => __('Customize all homepage sections', 'oneworldimpact'),
         'priority'    => 30,
+    ));
+    
+    // Hero Section
+    $wp_customize->add_section('hero_section', array(
+        'title'    => __('Hero Section', 'oneworldimpact'),
+        'priority' => 30,
+        'panel'    => 'homepage_panel',
     ));
     
     // Hero Eyebrow
