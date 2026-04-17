@@ -22,10 +22,10 @@
       <div class='logo-wrap'>
         <?php 
         $main_logo = get_theme_mod('logo_main', get_template_directory_uri() . '/assets/images/OWL-logo.png');
-        $stacked_logo = get_theme_mod('logo_stacked', get_template_directory_uri() . '/assets/images/OWI-Stacked.png');
+        $wordmark_logo = get_theme_mod('logo_wordmark', get_template_directory_uri() . '/assets/images/OWI-One-Line.png');
         ?>
         <img src='<?php echo esc_url($main_logo); ?>' alt='<?php bloginfo('name'); ?> icon' style='height:56px'>
-        <img src='<?php echo esc_url($stacked_logo); ?>' alt='<?php bloginfo('name'); ?> stacked wordmark' style='height:72px'>
+        <img src='<?php echo esc_url($wordmark_logo); ?>' alt='<?php bloginfo('name'); ?> wordmark' style='height:72px'>
       </div>
       <p style='max-width:420px;margin-top:18px'><?php echo esc_html(get_theme_mod('footer_description', 'Transforming visionary community projects into sustainable, accountable, and life-changing realities across the globe.')); ?></p>
     </div>

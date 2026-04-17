@@ -23,7 +23,7 @@
     <?php 
     // Get customizer logo images
     $main_logo = get_theme_mod('logo_main', get_template_directory_uri() . '/assets/images/OWL-logo.png');
-    $wordmark_logo = get_theme_mod('logo_wordmark', get_template_directory_uri() . '/assets/images/OWI-One-Line.png');
+    $stacked_logo = get_theme_mod('logo_stacked', get_template_directory_uri() . '/assets/images/OWI-Stacked.png');
     
     // Display custom logo or fallback to main logo image
     if (has_custom_logo()) {
@@ -37,7 +37,7 @@
     }
     ?>
     <a href="<?php echo esc_url(home_url('/')); ?>">
-        <img class='logo-wordmark' src='<?php echo esc_url($wordmark_logo); ?>' alt='<?php bloginfo('name'); ?>' style='height: 34px;'>
+        <img class='logo-wordmark' src='<?php echo esc_url($stacked_logo); ?>' alt='<?php bloginfo('name'); ?>' style='height: 34px;'>
     </a>
   </div>
   <div class='menu'>
