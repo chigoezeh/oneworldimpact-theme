@@ -703,6 +703,10 @@ section {
   display: block;
 }
 
+.footer .logo-wrap img:nth-child(2) {
+  height: 48px !important;
+}
+
 .footer .logo-wrap {
   align-items: flex-start;
 }
