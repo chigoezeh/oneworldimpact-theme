@@ -109,50 +109,62 @@ get_header();
     </div>
     <p><?php echo esc_html(get_theme_mod('leadership_intro', 'Leadership profiles remain concise here so the visual balance stays polished while still giving visitors a clear sense of the team behind OWI.')); ?></p>
   </div>
-  <div class='leadership'>
-    <div class='leader'>
-      <?php 
-      $leader1_image = get_theme_mod('leader1_image');
-      if ($leader1_image) : ?>
-        <div class='leader-photo' style='background-image: url(<?php echo esc_url($leader1_image); ?>); background-position: center top; background-size: cover;'></div>
-      <?php else : ?>
-        <div class='leader-photo'></div>
-      <?php endif; ?>
-      <div class='leader-body'>
-        <h3><?php echo esc_html(get_theme_mod('leader1_name', 'Brian Baughman')); ?></h3>
-        <div class='role'><?php echo esc_html(get_theme_mod('leader1_role', 'Chief Executive Officer')); ?></div>
-        <p><?php echo esc_html(get_theme_mod('leader1_bio', 'A seasoned operator with deep experience across construction, logistics, and execution systems, Brian leads OWI\'s platform for disciplined global project delivery.')); ?></p>
+  
+  <?php
+  // Query team members
+  $team_args = array(
+      'post_type'      => 'owi_team',
+      'posts_per_page' => -1,
+      'orderby'        => 'menu_order',
+      'order'          => 'ASC',
+  );
+  $team_query = new WP_Query($team_args);
+  
+  if ($team_query->have_posts()) : ?>
+    <div class='team-carousel-container'>
+      <button class='team-arrow team-arrow-left' aria-label='Previous team members'>
+        <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+          <polyline points='15 18 9 12 15 6'></polyline>
+        </svg>
+      </button>
+      
+      <div class='leadership team-carousel'>
+        <?php while ($team_query->have_posts()) : $team_query->the_post(); 
+          $role = get_post_meta(get_the_ID(), '_team_member_role', true);
+        ?>
+          <div class='leader team-slide'>
+            <?php if (has_post_thumbnail()) : ?>
+              <div class='leader-photo' style='background-image: url(<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'leader-photo')); ?>); background-position: center top; background-size: cover;'></div>
+            <?php else : ?>
+              <div class='leader-photo'></div>
+            <?php endif; ?>
+            <div class='leader-body'>
+              <h3><?php the_title(); ?></h3>
+              <?php if ($role) : ?>
+                <div class='role'><?php echo esc_html($role); ?></div>
+              <?php endif; ?>
+              <?php if (get_the_content()) : ?>
+                <p><?php echo wp_trim_words(get_the_content(), 40, '...'); ?></p>
+              <?php endif; ?>
+            </div>
+          </div>
+        <?php endwhile; ?>
       </div>
+      
+      <button class='team-arrow team-arrow-right' aria-label='Next team members'>
+        <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+          <polyline points='9 18 15 12 9 6'></polyline>
+        </svg>
+      </button>
     </div>
-    <div class='leader'>
-      <?php 
-      $leader2_image = get_theme_mod('leader2_image');
-      if ($leader2_image) : ?>
-        <div class='leader-photo' style='background-image: url(<?php echo esc_url($leader2_image); ?>); background-position: center top; background-size: cover;'></div>
-      <?php else : ?>
-        <div class='leader-photo'></div>
-      <?php endif; ?>
-      <div class='leader-body'>
-        <h3><?php echo esc_html(get_theme_mod('leader2_name', 'Rabiic Gedi')); ?></h3>
-        <div class='role'><?php echo esc_html(get_theme_mod('leader2_role', 'Chief International Officer')); ?></div>
-        <p><?php echo esc_html(get_theme_mod('leader2_bio', 'Rabiic advances international partnerships, infrastructure conversations, and institution-facing initiatives that connect capital, community needs, and implementation strategy.')); ?></p>
-      </div>
-    </div>
-    <div class='leader'>
-      <?php 
-      $leader3_image = get_theme_mod('leader3_image');
-      if ($leader3_image) : ?>
-        <div class='leader-photo' style='background-image: url(<?php echo esc_url($leader3_image); ?>); background-position: center top; background-size: cover;'></div>
-      <?php else : ?>
-        <div class='leader-photo'></div>
-      <?php endif; ?>
-      <div class='leader-body'>
-        <h3><?php echo esc_html(get_theme_mod('leader3_name', 'Joe Cota')); ?></h3>
-        <div class='role'><?php echo esc_html(get_theme_mod('leader3_role', 'Chief Strategy Officer')); ?></div>
-        <p><?php echo esc_html(get_theme_mod('leader3_bio', 'Joe supports long-range strategic development, helping shape opportunity pipelines, partner relationships, and practical frameworks for growth.')); ?></p>
-      </div>
-    </div>
-  </div>
+  <?php else : ?>
+    <!-- Fallback content when no team members exist -->
+    <p style='text-align: center; color: var(--ink); padding: 40px;'>
+      <?php _e('No team members have been added yet. Add team members via the Team menu in the admin area.', 'oneworldimpact'); ?>
+    </p>
+  <?php endif; 
+  wp_reset_postdata();
+  ?>
 </section>
 <?php endif; ?>
 

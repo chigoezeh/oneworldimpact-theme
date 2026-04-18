@@ -93,6 +93,15 @@ function oneworldimpact_scripts() {
         '1.0.0',
         true
     );
+    
+    // Enqueue team carousel script
+    wp_enqueue_script(
+        'oneworldimpact-team-carousel',
+        get_template_directory_uri() . '/assets/js/team-carousel.js',
+        array('jquery'),
+        '1.0.0',
+        true
+    );
 }
 add_action('wp_enqueue_scripts', 'oneworldimpact_scripts');
 
@@ -156,6 +165,65 @@ function oneworldimpact_register_news_post_type() {
 add_action('init', 'oneworldimpact_register_news_post_type', 0);
 
 /**
+ * Register Custom Post Type: Team Members
+ */
+function oneworldimpact_register_team_post_type() {
+    $labels = array(
+        'name'                  => _x('Team Members', 'Post Type General Name', 'oneworldimpact'),
+        'singular_name'         => _x('Team Member', 'Post Type Singular Name', 'oneworldimpact'),
+        'menu_name'             => __('Team', 'oneworldimpact'),
+        'name_admin_bar'        => __('Team Member', 'oneworldimpact'),
+        'archives'              => __('Team Archives', 'oneworldimpact'),
+        'attributes'            => __('Team Attributes', 'oneworldimpact'),
+        'parent_item_colon'     => __('Parent Team Member:', 'oneworldimpact'),
+        'all_items'             => __('All Team Members', 'oneworldimpact'),
+        'add_new_item'          => __('Add New Team Member', 'oneworldimpact'),
+        'add_new'               => __('Add New', 'oneworldimpact'),
+        'new_item'              => __('New Team Member', 'oneworldimpact'),
+        'edit_item'             => __('Edit Team Member', 'oneworldimpact'),
+        'update_item'           => __('Update Team Member', 'oneworldimpact'),
+        'view_item'             => __('View Team Member', 'oneworldimpact'),
+        'view_items'            => __('View Team Members', 'oneworldimpact'),
+        'search_items'          => __('Search Team', 'oneworldimpact'),
+        'not_found'             => __('Not found', 'oneworldimpact'),
+        'not_found_in_trash'    => __('Not found in Trash', 'oneworldimpact'),
+        'featured_image'        => __('Team Member Photo', 'oneworldimpact'),
+        'set_featured_image'    => __('Set team member photo', 'oneworldimpact'),
+        'remove_featured_image' => __('Remove team member photo', 'oneworldimpact'),
+        'use_featured_image'    => __('Use as team member photo', 'oneworldimpact'),
+        'insert_into_item'      => __('Insert into team member', 'oneworldimpact'),
+        'uploaded_to_this_item' => __('Uploaded to this team member', 'oneworldimpact'),
+        'items_list'            => __('Team list', 'oneworldimpact'),
+        'items_list_navigation' => __('Team list navigation', 'oneworldimpact'),
+        'filter_items_list'     => __('Filter team list', 'oneworldimpact'),
+    );
+    
+    $args = array(
+        'label'                 => __('Team Member', 'oneworldimpact'),
+        'description'           => __('Team members and leadership', 'oneworldimpact'),
+        'labels'                => $labels,
+        'supports'              => array('title', 'editor', 'thumbnail', 'custom-fields', 'page-attributes'),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_position'         => 6,
+        'menu_icon'             => 'dashicons-groups',
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => false,
+        'exclude_from_search'   => true,
+        'publicly_queryable'    => false,
+        'capability_type'       => 'post',
+        'show_in_rest'          => true,
+    );
+    
+    register_post_type('owi_team', $args);
+}
+add_action('init', 'oneworldimpact_register_team_post_type', 0);
+
+/**
  * Add custom image sizes
  */
 function oneworldimpact_custom_image_sizes() {
@@ -164,6 +232,67 @@ function oneworldimpact_custom_image_sizes() {
     add_image_size('about-visual', 800, 420, true);
 }
 add_action('after_setup_theme', 'oneworldimpact_custom_image_sizes');
+
+/**
+ * Add Team Member Meta Box
+ */
+function oneworldimpact_add_team_meta_box() {
+    add_meta_box(
+        'team_member_details',
+        __('Team Member Details', 'oneworldimpact'),
+        'oneworldimpact_team_meta_box_callback',
+        'owi_team',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'oneworldimpact_add_team_meta_box');
+
+/**
+ * Team Member Meta Box Callback
+ */
+function oneworldimpact_team_meta_box_callback($post) {
+    wp_nonce_field('oneworldimpact_save_team_meta', 'oneworldimpact_team_meta_nonce');
+    
+    $role = get_post_meta($post->ID, '_team_member_role', true);
+    ?>
+    <table class="form-table">
+        <tr>
+            <th><label for="team_member_role"><?php _e('Role/Position', 'oneworldimpact'); ?></label></th>
+            <td>
+                <input type="text" id="team_member_role" name="team_member_role" value="<?php echo esc_attr($role); ?>" class="regular-text" />
+                <p class="description"><?php _e('e.g., Chief Executive Officer, Senior Developer, etc.', 'oneworldimpact'); ?></p>
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+
+/**
+ * Save Team Member Meta Data
+ */
+function oneworldimpact_save_team_meta($post_id) {
+    if (!isset($_POST['oneworldimpact_team_meta_nonce'])) {
+        return;
+    }
+    
+    if (!wp_verify_nonce($_POST['oneworldimpact_team_meta_nonce'], 'oneworldimpact_save_team_meta')) {
+        return;
+    }
+    
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+    
+    if (isset($_POST['team_member_role'])) {
+        update_post_meta($post_id, '_team_member_role', sanitize_text_field($_POST['team_member_role']));
+    }
+}
+add_action('save_post_owi_team', 'oneworldimpact_save_team_meta');
 
 /**
  * Add active class to current menu item
@@ -1561,6 +1690,7 @@ function oneworldimpact_customize_register($wp_customize) {
     // Leadership Section
     $wp_customize->add_section('leadership_section', array(
         'title'    => __('Leadership Section', 'oneworldimpact'),
+        'description' => __('Configure the leadership/team section. Add team members via Team menu in admin. Use drag-and-drop to reorder team members.', 'oneworldimpact'),
         'priority' => 44,
         'panel'    => 'about_panel',
     ));
@@ -1606,54 +1736,5 @@ function oneworldimpact_customize_register($wp_customize) {
         'section'  => 'leadership_section',
         'type'     => 'textarea',
     ));
-    
-    // Leaders 1-3
-    $leader_defaults = array(
-        1 => array('name' => 'Brian Baughman', 'role' => 'Chief Executive Officer', 'bio' => 'A seasoned operator with deep experience across construction, logistics, and execution systems, Brian leads OWI\'s platform for disciplined global project delivery.'),
-        2 => array('name' => 'Rabiic Gedi', 'role' => 'Chief International Officer', 'bio' => 'Rabiic advances international partnerships, infrastructure conversations, and institution-facing initiatives that connect capital, community needs, and implementation strategy.'),
-        3 => array('name' => 'Joe Cota', 'role' => 'Chief Strategy Officer', 'bio' => 'Joe supports long-range strategic development, helping shape opportunity pipelines, partner relationships, and practical frameworks for growth.'),
-    );
-    
-    for ($i = 1; $i <= 3; $i++) {
-        $wp_customize->add_setting("leader{$i}_name", array(
-            'default'           => $leader_defaults[$i]['name'],
-            'sanitize_callback' => 'sanitize_text_field',
-        ));
-        $wp_customize->add_control("leader{$i}_name", array(
-            'label'    => sprintf(__('Leader %d Name', 'oneworldimpact'), $i),
-            'section'  => 'leadership_section',
-            'type'     => 'text',
-        ));
-        
-        $wp_customize->add_setting("leader{$i}_role", array(
-            'default'           => $leader_defaults[$i]['role'],
-            'sanitize_callback' => 'sanitize_text_field',
-        ));
-        $wp_customize->add_control("leader{$i}_role", array(
-            'label'    => sprintf(__('Leader %d Role', 'oneworldimpact'), $i),
-            'section'  => 'leadership_section',
-            'type'     => 'text',
-        ));
-        
-        $wp_customize->add_setting("leader{$i}_bio", array(
-            'default'           => $leader_defaults[$i]['bio'],
-            'sanitize_callback' => 'sanitize_textarea_field',
-        ));
-        $wp_customize->add_control("leader{$i}_bio", array(
-            'label'    => sprintf(__('Leader %d Bio', 'oneworldimpact'), $i),
-            'section'  => 'leadership_section',
-            'type'     => 'textarea',
-        ));
-        
-        $wp_customize->add_setting("leader{$i}_image", array(
-            'default'           => '',
-            'sanitize_callback' => 'esc_url_raw',
-        ));
-        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, "leader{$i}_image", array(
-            'label'    => sprintf(__('Leader %d Image', 'oneworldimpact'), $i),
-            'section'  => 'leadership_section',
-            'settings' => "leader{$i}_image",
-        )));
-    }
 }
 add_action('customize_register', 'oneworldimpact_customize_register');

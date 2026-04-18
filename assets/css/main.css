@@ -642,11 +642,22 @@ section {
   line-height: 1.6;
 }
 
-/* Leadership */
+/* Leadership / Team Carousel */
+.team-carousel-container {
+  position: relative;
+  padding: 0 60px;
+}
+
 .leadership {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 30px;
+  transition: transform 0.4s ease;
+  overflow: visible;
+}
+
+.team-carousel .team-slide {
+  flex: 0 0 calc(33.333% - 20px);
+  min-width: calc(33.333% - 20px);
 }
 
 .leader {
@@ -655,33 +666,22 @@ section {
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(11, 31, 58, 0.06);
   border: 1px solid rgba(11, 31, 58, 0.04);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .leader-photo {
   height: 320px;
-  background: #eef2f6 center top/contain no-repeat;
-}
-
-.leader:nth-child(1) .leader-photo {
-  background-image: url('../images/leader-1.jpg');
-  background-position: left top;
-  background-size: 300% auto;
-}
-
-.leader:nth-child(2) .leader-photo {
-  background-image: url('../images/leader-2.jpg');
-  background-position: center top;
-  background-size: 300% auto;
-}
-
-.leader:nth-child(3) .leader-photo {
-  background-image: url('../images/leader-3.jpg');
-  background-position: right top;
-  background-size: 300% auto;
+  background: #eef2f6 center top/cover no-repeat;
+  flex-shrink: 0;
 }
 
 .leader-body {
   padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .leader-body h3 {
@@ -694,6 +694,7 @@ section {
   color: var(--ink);
   font-size: 14px;
   line-height: 1.6;
+  flex-grow: 1;
 }
 
 .role {
@@ -703,6 +704,52 @@ section {
   letter-spacing: 1px;
   font-weight: 600;
   margin-bottom: 14px;
+}
+
+/* Team Carousel Arrows */
+.team-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 2px solid var(--royal);
+  color: var(--royal);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.team-arrow:hover:not(.disabled) {
+  background: var(--royal);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.team-arrow.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: #ccc;
+  color: #ccc;
+}
+
+.team-arrow-left {
+  left: 0;
+}
+
+.team-arrow-right {
+  right: 0;
+}
+
+.team-arrow svg {
+  width: 24px;
+  height: 24px;
 }
 
 /* Footer CTA */
@@ -998,7 +1045,6 @@ section {
   .cards,
   .cards.two,
   .pillars,
-  .leadership,
   .focus-grid,
   .timeline,
   .news-grid,
@@ -1013,6 +1059,21 @@ section {
   
   .arrow {
     display: none;
+  }
+  
+  /* Team carousel: show 2 slides on tablet */
+  .team-carousel .team-slide {
+    flex: 0 0 calc(50% - 15px);
+    min-width: calc(50% - 15px);
+  }
+  
+  .team-carousel-container {
+    padding: 0 50px;
+  }
+  
+  .team-arrow {
+    width: 40px;
+    height: 40px;
   }
   
   .hero h1 {
@@ -1153,5 +1214,29 @@ body.menu-open {
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: -1;
+  }
+  
+  /* Team carousel: show 1 slide on mobile */
+  .team-carousel .team-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+  
+  .team-carousel-container {
+    padding: 0 45px;
+  }
+  
+  .team-arrow {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .team-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .leader-photo {
+    height: 280px;
   }
 }
