@@ -84,6 +84,15 @@ function oneworldimpact_scripts() {
         '1.0.0',
         true
     );
+    
+    // Enqueue mobile menu script
+    wp_enqueue_script(
+        'oneworldimpact-mobile-menu',
+        get_template_directory_uri() . '/assets/js/mobile-menu.js',
+        array('jquery'),
+        '1.0.0',
+        true
+    );
 }
 add_action('wp_enqueue_scripts', 'oneworldimpact_scripts');
 

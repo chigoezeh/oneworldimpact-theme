@@ -53,6 +53,11 @@ if ($show_banner) :
         <img class='logo-wordmark' src='<?php echo esc_url($stacked_logo); ?>' alt='<?php bloginfo('name'); ?>' style='height: 34px;'>
     </a>
   </div>
+  <button class='hamburger' aria-label='Toggle menu' aria-expanded='false'>
+    <span class='hamburger-line'></span>
+    <span class='hamburger-line'></span>
+    <span class='hamburger-line'></span>
+  </button>
   <div class='menu'>
     <?php
     wp_nav_menu(array(

@@ -980,10 +980,6 @@ section {
     display: none;
   }
   
-  .menu {
-    display: none;
-  }
-  
   .hero h1 {
     font-size: 48px;
   }
@@ -1023,5 +1019,104 @@ section {
   
   .contact-form-card .form-row {
     grid-template-columns: 1fr !important;
+  }
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 1001;
+  flex-direction: column;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-line {
+  width: 28px;
+  height: 3px;
+  background-color: var(--navy);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Prevent body scroll when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Mobile-only styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  
+  .menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: white;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    padding: 80px 32px 32px;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+  }
+  
+  .menu.mobile-active {
+    right: 0;
+  }
+  
+  .menu span {
+    display: block;
+    padding: 0;
+  }
+  
+  .menu span a {
+    display: block;
+    padding: 14px 16px;
+    font-size: 16px;
+    color: var(--navy);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  
+  .menu span a:hover,
+  .menu span a.active {
+    background: var(--royal);
+    color: white;
+  }
+  
+  /* Mobile menu overlay */
+  .menu.mobile-active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 280px;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
   }
 }
