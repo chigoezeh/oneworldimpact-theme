@@ -39,31 +39,49 @@ get_header();
       </div>
     </div>
 
-    <div class='contact-form-card'>
-      <?php
-      // Check if Contact Form 7 shortcode is set in Customizer
-      $cf7_shortcode = get_theme_mod('contact_form_shortcode', '');
-      
-      if (!empty($cf7_shortcode)) {
-          // Use Contact Form 7 shortcode
-          echo do_shortcode($cf7_shortcode);
-      } else {
-          // Fallback: Simple HTML form or instructions
-          ?>
-          <div class='contact-form-placeholder'>
-            <p style='text-align: center; padding: 2rem; color: #6b7280;'>
-              <strong><?php _e('Contact Form Setup Required', 'oneworldimpact'); ?></strong><br>
-              <?php _e('Please install Contact Form 7 plugin and add the shortcode in:', 'oneworldimpact'); ?><br>
-              <em><?php _e('Appearance > Customize > Contact Page > Contact Form Shortcode', 'oneworldimpact'); ?></em>
-            </p>
-            <p style='text-align: center; padding: 0 2rem 2rem; color: #9ca3af; font-size: 14px;'>
-              <?php _e('Alternatively, you can add your own form HTML or embed code here by editing template-contact.php', 'oneworldimpact'); ?>
-            </p>
-          </div>
+    <?php
+    // Get contact form display settings
+    $show_form = get_theme_mod('contact_show_form', true);
+    $show_image = get_theme_mod('contact_show_image', false);
+    $contact_image = get_theme_mod('contact_image', '');
+    
+    // Check which display mode to use
+    if ($show_image && !empty($contact_image)) {
+        // Display image instead of form
+        ?>
+        <div class='contact-image-card' style='background-image: url(<?php echo esc_url($contact_image); ?>);'></div>
+        <?php
+    } elseif ($show_form) {
+        // Display contact form
+        ?>
+        <div class='contact-form-card'>
           <?php
-      }
-      ?>
-    </div>
+          // Check if Contact Form 7 shortcode is set in Customizer
+          $cf7_shortcode = get_theme_mod('contact_form_shortcode', '');
+          
+          if (!empty($cf7_shortcode)) {
+              // Use Contact Form 7 shortcode
+              echo do_shortcode($cf7_shortcode);
+          } else {
+              // Fallback: Simple HTML form or instructions
+              ?>
+              <div class='contact-form-placeholder'>
+                <p style='text-align: center; padding: 2rem; color: #6b7280;'>
+                  <strong><?php _e('Contact Form Setup Required', 'oneworldimpact'); ?></strong><br>
+                  <?php _e('Please install Contact Form 7 plugin and add the shortcode in:', 'oneworldimpact'); ?><br>
+                  <em><?php _e('Appearance > Customize > Contact Page > Contact Form Shortcode', 'oneworldimpact'); ?></em>
+                </p>
+                <p style='text-align: center; padding: 0 2rem 2rem; color: #9ca3af; font-size: 14px;'>
+                  <?php _e('Alternatively, you can add your own form HTML or embed code here by editing template-contact.php', 'oneworldimpact'); ?>
+                </p>
+              </div>
+              <?php
+          }
+          ?>
+        </div>
+        <?php
+    }
+    ?>
   </div>
 </section>
 

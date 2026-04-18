@@ -315,7 +315,8 @@ section {
   line-height: 1.02;
   margin: 0;
   color: var(--navy);
-  max-width: 50%;
+  min-width: 98%;
+  max-width: 600px;
 }
 
 .section-head p {
@@ -850,7 +851,7 @@ section {
 .contact-form-card {
   background: #fff;
   border-radius: 18px;
-  padding: 40px;
+  padding: 30px 32px;
   box-shadow: 0 10px 30px rgba(11, 31, 58, 0.06);
   border: 1px solid rgba(11, 31, 58, 0.04);
 }
@@ -866,15 +867,15 @@ section {
 .contact-form-card textarea,
 .contact-form-card select {
   width: 100%;
-  padding: 14px 16px;
+  padding: 10px 14px;
   border: 1px solid rgba(11, 31, 58, 0.15);
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 14px;
   font-family: 'Poppins', sans-serif;
   color: var(--navy);
   outline: none;
   transition: border-color 0.2s;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .contact-form-card input::placeholder,
@@ -890,13 +891,13 @@ section {
 
 .contact-form-card textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 80px;
 }
 
 .contact-form-card .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 14px;
   margin-bottom: 0;
 }
 
@@ -906,13 +907,13 @@ section {
   background: var(--navy);
   color: #fff;
   font-weight: 600;
-  font-size: 16px;
-  padding: 16px;
+  font-size: 15px;
+  padding: 12px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-top: 8px;
+  margin-top: 6px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -935,6 +936,18 @@ section {
 .contact-form-placeholder {
   text-align: center;
   padding: 40px 20px;
+}
+
+.contact-image-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(11, 31, 58, 0.06);
+  border: 1px solid rgba(11, 31, 58, 0.04);
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Home Divider */
@@ -978,10 +991,6 @@ section {
   .section-head {
     flex-direction: column;
     align-items: flex-start;
-  }
-  
-  .section-head h2 {
-    max-width: 100%;
   }
   
   .section-head p {

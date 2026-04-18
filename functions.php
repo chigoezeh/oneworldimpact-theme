@@ -965,6 +965,42 @@ function oneworldimpact_customize_register($wp_customize) {
         'description' => __('Enter your Contact Form 7 shortcode here (e.g., [contact-form-7 id="123"]). Install Contact Form 7 plugin first.', 'oneworldimpact'),
     ));
     
+    // Show Contact Form
+    $wp_customize->add_setting('contact_show_form', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('contact_show_form', array(
+        'label'       => __('Show Contact Form', 'oneworldimpact'),
+        'section'     => 'contact_page_section',
+        'type'        => 'checkbox',
+        'description' => __('Uncheck to hide the contact form', 'oneworldimpact'),
+    ));
+    
+    // Show Image Instead of Form
+    $wp_customize->add_setting('contact_show_image', array(
+        'default'           => false,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('contact_show_image', array(
+        'label'       => __('Show Image Instead of Form', 'oneworldimpact'),
+        'section'     => 'contact_page_section',
+        'type'        => 'checkbox',
+        'description' => __('Check to display an image instead of the contact form', 'oneworldimpact'),
+    ));
+    
+    // Contact Image Upload
+    $wp_customize->add_setting('contact_image', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'contact_image', array(
+        'label'       => __('Contact Area Image', 'oneworldimpact'),
+        'section'     => 'contact_page_section',
+        'settings'    => 'contact_image',
+        'description' => __('Upload an image to display instead of the contact form. Only visible when "Show Image Instead of Form" is checked. Recommended size: 600x600px or larger.', 'oneworldimpact'),
+    )));
+    
     // Footer CTA Section
     $wp_customize->add_section('footer_cta_section', array(
         'title'    => __('Footer CTA Section', 'oneworldimpact'),
