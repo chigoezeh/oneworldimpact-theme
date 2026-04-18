@@ -19,8 +19,28 @@ $hero_style = '';
 if ($hero_bg_type === 'image' && !empty($hero_bg_image)) {
     $hero_style = 'style="background: linear-gradient(90deg, rgba(11,31,58,.78) 0%, rgba(11,31,58,.42) 38%, rgba(11,31,58,.12) 100%), url(' . esc_url($hero_bg_image) . ') center/cover;"';
 }
+
+// Get globe panel settings
+$show_globe = get_theme_mod('globe_panel_show', true);
+$globe_gradient = get_theme_mod('globe_panel_gradient', true);
+$globe_image = get_theme_mod('globe_panel_image', '');
+
+// Build globe panel classes and inline style
+$globe_classes = 'globe-panel';
+$globe_style = '';
+if (!$globe_gradient) {
+    $globe_classes .= ' no-gradient';
+}
+if (!empty($globe_image)) {
+    $globe_classes .= ' has-image';
+    $globe_style = ' style="background-image: url(' . esc_url($globe_image) . ');"';
+}
+
+// Check if hero section should be shown
+$show_hero = get_theme_mod('show_hero_section', true);
 ?>
 
+<?php if ($show_hero) : ?>
 <!-- Hero Section -->
 <section class='hero' <?php echo $hero_style; ?>>
   <div class='hero-inner'>
@@ -33,10 +53,14 @@ if ($hero_bg_type === 'image' && !empty($hero_bg_image)) {
         <a href='<?php echo esc_url(get_theme_mod('hero_button2_url', '#')); ?>' class='btn btn-secondary'><?php echo esc_html(get_theme_mod('hero_button2_text', 'Partner With Us')); ?></a>
       </div>
     </div>
-    <div class='globe-panel'></div>
+    <?php if ($show_globe) : ?>
+    <div class='<?php echo esc_attr($globe_classes); ?>'<?php echo $globe_style; ?>></div>
+    <?php endif; ?>
   </div>
 </section>
+<?php endif; ?>
 
+<?php if (get_theme_mod('show_metrics_section', true)) : ?>
 <!-- Metrics Section -->
 <section class='metrics'>
   <div class='metric'>
@@ -56,7 +80,9 @@ if ($hero_bg_type === 'image' && !empty($hero_bg_image)) {
     <p><?php echo esc_html(get_theme_mod('metric4_label', 'Transparent Governance')); ?></p>
   </div>
 </section>
+<?php endif; ?>
 
+<?php if (get_theme_mod('show_mission_section', true)) : ?>
 <!-- Mission and Vision Section -->
 <section class='white'>
   <div class='section-head'>
@@ -79,7 +105,9 @@ if ($hero_bg_type === 'image' && !empty($hero_bg_image)) {
     </div>
   </div>
 </section>
+<?php endif; ?>
 
+<?php if (get_theme_mod('show_services_section', true)) : ?>
 <!-- Services Section -->
 <section class='soft-green'>
   <div class='section-head'>
@@ -107,7 +135,9 @@ if ($hero_bg_type === 'image' && !empty($hero_bg_image)) {
     </div>
   </div>
 </section>
+<?php endif; ?>
 
+<?php if (get_theme_mod('show_pillars_section', true)) : ?>
 <!-- Partnership Pillars Section -->
 <section class='white'>
   <div class='section-head'>
@@ -148,7 +178,9 @@ if ($hero_bg_type === 'image' && !empty($hero_bg_image)) {
     </div>
   </div>
 </section>
+<?php endif; ?>
 
+<?php if (get_theme_mod('show_news_section', true)) : ?>
 <!-- News Section -->
 <section class='soft-blue'>
   <div class='section-head'>
@@ -242,6 +274,7 @@ if ($hero_bg_type === 'image' && !empty($hero_bg_image)) {
     <span></span>
   </div>
 </section>
+<?php endif; ?>
 
 <?php
 get_footer();

@@ -222,12 +222,26 @@ section {
   overflow: hidden;
 }
 
+.globe-panel.has-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.globe-panel.no-gradient {
+  background: none;
+  backdrop-filter: none;
+}
+
 .globe-panel:before {
   content: '';
   position: absolute;
   inset: 24px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 24px;
+}
+
+.globe-panel.no-gradient:before {
+  display: none;
 }
 
 .globe-panel:after {
@@ -239,6 +253,10 @@ section {
   height: 280px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+}
+
+.globe-panel.no-gradient:after {
+  display: none;
 }
 
 /* Metrics Section */
@@ -297,6 +315,7 @@ section {
   line-height: 1.02;
   margin: 0;
   color: var(--navy);
+  max-width: 50%;
 }
 
 .section-head p {
@@ -959,6 +978,10 @@ section {
   .section-head {
     flex-direction: column;
     align-items: flex-start;
+  }
+  
+  .section-head h2 {
+    max-width: 100%;
   }
   
   .section-head p {

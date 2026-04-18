@@ -484,11 +484,70 @@ function oneworldimpact_customize_register($wp_customize) {
         'description' => __('Recommended size: 1920x680px or larger. Only used when "Background Image" is selected above.', 'oneworldimpact'),
     )));
     
+    // Globe Panel Show/Hide
+    $wp_customize->add_setting('globe_panel_show', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('globe_panel_show', array(
+        'label'    => __('Show Globe Panel', 'oneworldimpact'),
+        'section'  => 'hero_section',
+        'type'     => 'checkbox',
+    ));
+    
+    // Globe Panel Show Gradient
+    $wp_customize->add_setting('globe_panel_gradient', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('globe_panel_gradient', array(
+        'label'       => __('Show Globe Panel Gradient', 'oneworldimpact'),
+        'section'     => 'hero_section',
+        'type'        => 'checkbox',
+        'description' => __('Uncheck to remove the decorative gradient effects from globe panel', 'oneworldimpact'),
+    ));
+    
+    // Globe Panel Background Image
+    $wp_customize->add_setting('globe_panel_image', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'globe_panel_image', array(
+        'label'       => __('Globe Panel Background Image', 'oneworldimpact'),
+        'section'     => 'hero_section',
+        'settings'    => 'globe_panel_image',
+        'description' => __('Upload a background image for the globe panel. Recommended size: 600x600px or larger.', 'oneworldimpact'),
+    )));
+    
+    // Hero Section Show/Hide
+    $wp_customize->add_setting('show_hero_section', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('show_hero_section', array(
+        'label'    => __('Show Hero Section', 'oneworldimpact'),
+        'section'  => 'hero_section',
+        'type'     => 'checkbox',
+        'priority' => 1,
+    ));
+    
     // Metrics Section
     $wp_customize->add_section('metrics_section', array(
         'title'    => __('Metrics Section', 'oneworldimpact'),
         'priority' => 31,
         'panel'    => 'homepage_panel',
+    ));
+    
+    // Metrics Section Show/Hide
+    $wp_customize->add_setting('show_metrics_section', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('show_metrics_section', array(
+        'label'    => __('Show Metrics Section', 'oneworldimpact'),
+        'section'  => 'metrics_section',
+        'type'     => 'checkbox',
+        'priority' => 1,
     ));
     
     // Metric 1
@@ -580,6 +639,18 @@ function oneworldimpact_customize_register($wp_customize) {
         'title'    => __('Mission & Vision Section', 'oneworldimpact'),
         'priority' => 32,
         'panel'    => 'homepage_panel',
+    ));
+    
+    // Mission Section Show/Hide
+    $wp_customize->add_setting('show_mission_section', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('show_mission_section', array(
+        'label'    => __('Show Mission & Vision Section', 'oneworldimpact'),
+        'section'  => 'mission_section',
+        'type'     => 'checkbox',
+        'priority' => 1,
     ));
     
     $wp_customize->add_setting('mission_kicker', array(
@@ -679,6 +750,18 @@ function oneworldimpact_customize_register($wp_customize) {
         'title'    => __('Services Section', 'oneworldimpact'),
         'priority' => 33,
         'panel'    => 'homepage_panel',
+    ));
+    
+    // Services Section Show/Hide
+    $wp_customize->add_setting('show_services_section', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('show_services_section', array(
+        'label'    => __('Show Services Section', 'oneworldimpact'),
+        'section'  => 'services_section',
+        'type'     => 'checkbox',
+        'priority' => 1,
     ));
     
     $wp_customize->add_setting('services_kicker', array(
@@ -888,6 +971,18 @@ function oneworldimpact_customize_register($wp_customize) {
         'priority' => 120,
     ));
     
+    // Footer CTA Section Show/Hide
+    $wp_customize->add_setting('show_footer_cta_section', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('show_footer_cta_section', array(
+        'label'    => __('Show Footer CTA Section', 'oneworldimpact'),
+        'section'  => 'footer_cta_section',
+        'type'     => 'checkbox',
+        'priority' => 1,
+    ));
+    
     $wp_customize->add_setting('footer_cta_kicker', array(
         'default'           => 'Partner with OWI',
         'sanitize_callback' => 'sanitize_text_field',
@@ -969,6 +1064,18 @@ function oneworldimpact_customize_register($wp_customize) {
         'title'    => __('Partnership Pillars Section', 'oneworldimpact'),
         'priority' => 34,
         'panel'    => 'homepage_panel',
+    ));
+    
+    // Pillars Section Show/Hide
+    $wp_customize->add_setting('show_pillars_section', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('show_pillars_section', array(
+        'label'    => __('Show Partnership Pillars Section', 'oneworldimpact'),
+        'section'  => 'pillars_section',
+        'type'     => 'checkbox',
+        'priority' => 1,
     ));
     
     $wp_customize->add_setting('pillars_kicker', array(
@@ -1092,6 +1199,18 @@ function oneworldimpact_customize_register($wp_customize) {
         'panel'    => 'homepage_panel',
     ));
     
+    // News Section Show/Hide
+    $wp_customize->add_setting('show_news_section', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('show_news_section', array(
+        'label'    => __('Show News Section', 'oneworldimpact'),
+        'section'  => 'news_section',
+        'type'     => 'checkbox',
+        'priority' => 1,
+    ));
+    
     $wp_customize->add_setting('news_kicker', array(
         'default'           => 'Latest news',
         'sanitize_callback' => 'sanitize_text_field',
@@ -1140,6 +1259,18 @@ function oneworldimpact_customize_register($wp_customize) {
         'panel'    => 'about_panel',
     ));
     
+    // About Hero Section Show/Hide
+    $wp_customize->add_setting('show_about_hero_section', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('show_about_hero_section', array(
+        'label'    => __('Show About Hero Section', 'oneworldimpact'),
+        'section'  => 'about_hero_section',
+        'type'     => 'checkbox',
+        'priority' => 1,
+    ));
+    
     $wp_customize->add_setting('about_hero_kicker', array(
         'default'           => 'About OWI',
         'sanitize_callback' => 'sanitize_text_field',
@@ -1185,6 +1316,18 @@ function oneworldimpact_customize_register($wp_customize) {
         'title'    => __('Focus Areas Section', 'oneworldimpact'),
         'priority' => 42,
         'panel'    => 'about_panel',
+    ));
+    
+    // Focus Section Show/Hide
+    $wp_customize->add_setting('show_focus_section', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('show_focus_section', array(
+        'label'    => __('Show Focus Areas Section', 'oneworldimpact'),
+        'section'  => 'focus_section',
+        'type'     => 'checkbox',
+        'priority' => 1,
     ));
     
     $wp_customize->add_setting('focus_kicker', array(
@@ -1264,6 +1407,18 @@ function oneworldimpact_customize_register($wp_customize) {
         'panel'    => 'about_panel',
     ));
     
+    // Timeline Section Show/Hide
+    $wp_customize->add_setting('show_timeline_section', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('show_timeline_section', array(
+        'label'    => __('Show Timeline Section', 'oneworldimpact'),
+        'section'  => 'timeline_section',
+        'type'     => 'checkbox',
+        'priority' => 1,
+    ));
+    
     $wp_customize->add_setting('timeline_kicker', array(
         'default'           => 'Partnership framework',
         'sanitize_callback' => 'sanitize_text_field',
@@ -1339,6 +1494,18 @@ function oneworldimpact_customize_register($wp_customize) {
         'title'    => __('Leadership Section', 'oneworldimpact'),
         'priority' => 44,
         'panel'    => 'about_panel',
+    ));
+    
+    // Leadership Section Show/Hide
+    $wp_customize->add_setting('show_leadership_section', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+    ));
+    $wp_customize->add_control('show_leadership_section', array(
+        'label'    => __('Show Leadership Section', 'oneworldimpact'),
+        'section'  => 'leadership_section',
+        'type'     => 'checkbox',
+        'priority' => 1,
     ));
     
     $wp_customize->add_setting('leadership_kicker', array(

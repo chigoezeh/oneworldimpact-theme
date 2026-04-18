@@ -9,12 +9,14 @@
  */
 ?>
 
+<?php if (get_theme_mod('show_footer_cta_section', true)) : ?>
 <section class='footer-cta'>
   <div class='kicker' style='color:rgba(225,187,88,.9)'><?php echo esc_html(get_theme_mod('footer_cta_kicker', 'Partner with OWI')); ?></div>
   <h2><?php echo esc_html(get_theme_mod('footer_cta_heading', 'Ready to Create Lasting Impact?')); ?></h2>
   <p><?php echo esc_html(get_theme_mod('footer_cta_text', 'Join our network of philanthropic foundations, development agencies, governments, international NGOs, and strategic investors committed to accountable transformation.')); ?></p>
   <a href='<?php echo esc_url(get_theme_mod('footer_cta_button_url', '#')); ?>' class='btn btn-primary'><?php echo esc_html(get_theme_mod('footer_cta_button_text', 'Start a Partnership')); ?></a>
 </section>
+<?php endif; ?>
 
 <div class='footer'>
   <div class='footer-grid'>

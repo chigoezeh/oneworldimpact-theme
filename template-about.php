@@ -11,6 +11,7 @@
 get_header();
 ?>
 
+<?php if (get_theme_mod('show_about_hero_section', true)) : ?>
 <!-- About Hero Section -->
 <section class='about-hero'>
   <div class='about-split'>
@@ -26,7 +27,9 @@ get_header();
     <div class='about-visual' style='background: linear-gradient(90deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.12)), url(<?php echo esc_url($about_visual); ?>) center top/cover;'></div>
   </div>
 </section>
+<?php endif; ?>
 
+<?php if (get_theme_mod('show_focus_section', true)) : ?>
 <!-- Strategic Focus Areas Section -->
 <section class='white'>
   <div class='section-head'>
@@ -59,7 +62,9 @@ get_header();
     </div>
   </div>
 </section>
+<?php endif; ?>
 
+<?php if (get_theme_mod('show_timeline_section', true)) : ?>
 <!-- Partnership Framework Timeline Section -->
 <section class='soft-green'>
   <div class='section-head'>
@@ -92,7 +97,9 @@ get_header();
     </div>
   </div>
 </section>
+<?php endif; ?>
 
+<?php if (get_theme_mod('show_leadership_section', true)) : ?>
 <!-- Leadership Section -->
 <section class='soft-blue'>
   <div class='section-head'>
@@ -147,6 +154,7 @@ get_header();
     </div>
   </div>
 </section>
+<?php endif; ?>
 
 <?php
 get_footer();
