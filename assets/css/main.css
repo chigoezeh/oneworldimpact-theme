@@ -122,6 +122,7 @@ body {
 /* Sections */
 section {
   padding: 88px 8%;
+  overflow-x: hidden;
 }
 
 /* Hero Section */
@@ -648,16 +649,22 @@ section {
   padding: 0 60px;
 }
 
+.team-carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
 .leadership {
   display: flex;
   gap: 30px;
   transition: transform 0.4s ease;
-  overflow: visible;
+  align-items: stretch;
 }
 
 .team-carousel .team-slide {
   flex: 0 0 calc(33.333% - 20px);
   min-width: calc(33.333% - 20px);
+  display: flex;
 }
 
 .leader {
@@ -666,7 +673,7 @@ section {
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(11, 31, 58, 0.06);
   border: 1px solid rgba(11, 31, 58, 0.04);
-  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -1071,6 +1078,10 @@ section {
     padding: 0 50px;
   }
   
+  .team-carousel-wrapper {
+    overflow: hidden;
+  }
+  
   .team-arrow {
     width: 40px;
     height: 40px;
@@ -1224,6 +1235,10 @@ body.menu-open {
   
   .team-carousel-container {
     padding: 0 45px;
+  }
+  
+  .team-carousel-wrapper {
+    overflow: hidden;
   }
   
   .team-arrow {

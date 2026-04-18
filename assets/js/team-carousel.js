@@ -50,27 +50,22 @@
             const slidesToShow = getSlidesToShow();
             const maxIndex = Math.max(0, totalSlides - slidesToShow);
             
-            // Hide arrows if all slides fit on screen
-            if (totalSlides <= slidesToShow) {
-                leftArrow.hide();
-                rightArrow.hide();
+            // Always show arrows
+            leftArrow.show();
+            rightArrow.show();
+            
+            // Disable left arrow at start
+            if (currentIndex <= 0) {
+                leftArrow.addClass('disabled').attr('disabled', true);
             } else {
-                leftArrow.show();
-                rightArrow.show();
-                
-                // Disable left arrow at start
-                if (currentIndex <= 0) {
-                    leftArrow.addClass('disabled').attr('disabled', true);
-                } else {
-                    leftArrow.removeClass('disabled').attr('disabled', false);
-                }
-                
-                // Disable right arrow at end
-                if (currentIndex >= maxIndex) {
-                    rightArrow.addClass('disabled').attr('disabled', true);
-                } else {
-                    rightArrow.removeClass('disabled').attr('disabled', false);
-                }
+                leftArrow.removeClass('disabled').attr('disabled', false);
+            }
+            
+            // Disable right arrow at end
+            if (currentIndex >= maxIndex || totalSlides <= slidesToShow) {
+                rightArrow.addClass('disabled').attr('disabled', true);
+            } else {
+                rightArrow.removeClass('disabled').attr('disabled', false);
             }
         }
         
