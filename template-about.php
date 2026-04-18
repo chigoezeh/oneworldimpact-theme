@@ -24,7 +24,7 @@ get_header();
     <?php 
     $about_visual = get_theme_mod('about_visual_image', get_template_directory_uri() . '/assets/images/about-visual.jpg');
     ?>
-    <div class='about-visual' style='background: linear-gradient(90deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.12)), url(<?php echo esc_url($about_visual); ?>) center top/cover;'></div>
+    <div class='about-visual' style='background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01)), url(<?php echo esc_url($about_visual); ?>) center top/cover;'></div>
   </div>
 </section>
 <?php endif; ?>
