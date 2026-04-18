@@ -134,11 +134,11 @@ get_header();
             $role = get_post_meta(get_the_ID(), '_team_member_role', true);
           ?>
             <div class='leader team-slide'>
-              <?php if (has_post_thumbnail()) : ?>
-                <div class='leader-photo' style='background-image: url(<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'leader-photo')); ?>); background-position: center top; background-size: cover;'></div>
-              <?php else : ?>
-                <div class='leader-photo'></div>
-              <?php endif; ?>
+              <div class='leader-photo'>
+                <?php if (has_post_thumbnail()) : ?>
+                  <img src='<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'leader-photo')); ?>' alt='<?php echo esc_attr(get_the_title()); ?>'>
+                <?php endif; ?>
+              </div>
               <div class='leader-body'>
                 <h3><?php the_title(); ?></h3>
                 <?php if ($role) : ?>

@@ -228,7 +228,7 @@ add_action('init', 'oneworldimpact_register_team_post_type', 0);
  */
 function oneworldimpact_custom_image_sizes() {
     add_image_size('news-card', 600, 220, true);
-    add_image_size('leader-photo', 400, 320, true);
+    add_image_size('leader-photo', 400, 320, array('center', 'top')); // Crop from top to preserve faces
     add_image_size('about-visual', 800, 420, true);
 }
 add_action('after_setup_theme', 'oneworldimpact_custom_image_sizes');
