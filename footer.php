@@ -23,11 +23,15 @@
     <div>
       <div class='logo-wrap'>
         <?php 
-        $main_logo = get_theme_mod('logo_main', get_template_directory_uri() . '/assets/images/OWL-logo.png');
-        $wordmark_logo = get_theme_mod('logo_wordmark', get_template_directory_uri() . '/assets/images/OWI-One-Line.png');
+        $footer_icon = get_theme_mod('footer_logo_icon', get_template_directory_uri() . '/assets/images/OWL-logo.png');
+        $footer_wordmark = get_theme_mod('footer_logo_wordmark', get_template_directory_uri() . '/assets/images/OWI-One-Line.png');
         ?>
-        <img src='<?php echo esc_url($main_logo); ?>' alt='<?php bloginfo('name'); ?> icon' style='height:56px'>
-        <img src='<?php echo esc_url($wordmark_logo); ?>' alt='<?php bloginfo('name'); ?> wordmark' style='height:72px'>
+        <a href='<?php echo esc_url(home_url('/')); ?>'>
+          <img src='<?php echo esc_url($footer_icon); ?>' alt='<?php bloginfo('name'); ?> icon' style='height:56px'>
+        </a>
+        <a href='<?php echo esc_url(home_url('/')); ?>'>
+          <img src='<?php echo esc_url($footer_wordmark); ?>' alt='<?php bloginfo('name'); ?> wordmark' style='height:72px'>
+        </a>
       </div>
       <p style='max-width:420px;margin-top:18px'><?php echo esc_html(get_theme_mod('footer_description', 'Transforming visionary community projects into sustainable, accountable, and life-changing realities across the globe.')); ?></p>
     </div>
@@ -66,5 +70,11 @@
  * Fallback footer menu
  */
 function oneworldimpact_footer_default_menu() {
-    echo '<p>About Us<br>Projects<br>News<br>Partnership</p>';
+    echo '<nav class="footer-menu">';
+    echo '<a href="' . esc_url(home_url('/about')) . '">About Us</a>';
+    echo '<a href="' . esc_url(home_url('/projects')) . '">Projects</a>';
+    echo '<a href="' . esc_url(home_url('/news')) . '">News</a>';
+    echo '<a href="' . esc_url(home_url('/partnership')) . '">Partnership</a>';
+    echo '<a href="' . esc_url(home_url('/contact')) . '">Contact</a>';
+    echo '</nav>';
 }

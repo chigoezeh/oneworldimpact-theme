@@ -314,10 +314,34 @@ function oneworldimpact_customize_register($wp_customize) {
         'sanitize_callback' => 'esc_url_raw',
     ));
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'logo_stacked', array(
-        'label'    => __('Stacked Logo (Footer)', 'oneworldimpact'),
+        'label'    => __('Stacked Logo', 'oneworldimpact'),
         'section'  => 'site_images_section',
         'settings' => 'logo_stacked',
-        'description' => __('Recommended height: 72px. Used in footer.', 'oneworldimpact'),
+        'description' => __('Recommended height: 72px. Alternative logo format.', 'oneworldimpact'),
+    )));
+    
+    // Footer Logo Icon
+    $wp_customize->add_setting('footer_logo_icon', array(
+        'default'           => get_template_directory_uri() . '/assets/images/OWL-logo.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'footer_logo_icon', array(
+        'label'    => __('Footer Logo Icon', 'oneworldimpact'),
+        'section'  => 'site_images_section',
+        'settings' => 'footer_logo_icon',
+        'description' => __('Recommended size: 56x56px. Icon logo used in footer.', 'oneworldimpact'),
+    )));
+    
+    // Footer Logo Wordmark
+    $wp_customize->add_setting('footer_logo_wordmark', array(
+        'default'           => get_template_directory_uri() . '/assets/images/OWI-One-Line.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'footer_logo_wordmark', array(
+        'label'    => __('Footer Logo Wordmark', 'oneworldimpact'),
+        'section'  => 'site_images_section',
+        'settings' => 'footer_logo_wordmark',
+        'description' => __('Recommended height: 72px. Wordmark logo used in footer.', 'oneworldimpact'),
     )));
     
     // About Page Visual
