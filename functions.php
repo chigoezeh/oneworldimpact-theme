@@ -239,11 +239,11 @@ add_action('after_setup_theme', 'oneworldimpact_custom_image_sizes');
 function oneworldimpact_add_team_meta_box() {
     add_meta_box(
         'team_member_details',
-        __('Team Member Details', 'oneworldimpact'),
+        __('Role/Position', 'oneworldimpact'),
         'oneworldimpact_team_meta_box_callback',
         'owi_team',
-        'normal',
-        'high'
+        'side',
+        'default'
     );
 }
 add_action('add_meta_boxes', 'oneworldimpact_add_team_meta_box');
@@ -256,15 +256,23 @@ function oneworldimpact_team_meta_box_callback($post) {
     
     $role = get_post_meta($post->ID, '_team_member_role', true);
     ?>
-    <table class="form-table">
-        <tr>
-            <th><label for="team_member_role"><?php _e('Role/Position', 'oneworldimpact'); ?></label></th>
-            <td>
-                <input type="text" id="team_member_role" name="team_member_role" value="<?php echo esc_attr($role); ?>" class="regular-text" />
-                <p class="description"><?php _e('e.g., Chief Executive Officer, Senior Developer, etc.', 'oneworldimpact'); ?></p>
-            </td>
-        </tr>
-    </table>
+    <p>
+        <label for="team_member_role" style="font-weight: 600; display: block; margin-bottom: 8px;">
+            <?php _e('Job Title', 'oneworldimpact'); ?>
+        </label>
+        <input 
+            type="text" 
+            id="team_member_role" 
+            name="team_member_role" 
+            value="<?php echo esc_attr($role); ?>" 
+            class="widefat" 
+            placeholder="e.g., Chief Executive Officer"
+            style="width: 100%;"
+        />
+    </p>
+    <p class="description" style="margin-top: 8px; font-size: 12px; color: #666;">
+        <?php _e('Enter the team member\'s job title or position.', 'oneworldimpact'); ?>
+    </p>
     <?php
 }
 
