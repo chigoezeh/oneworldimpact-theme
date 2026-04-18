@@ -792,7 +792,7 @@ section {
 
 /* Contact Page */
 .contact-page {
-  padding: 88px 8%;
+  padding: 50px 8%;
   background: var(--bg);
   min-height: calc(100vh - 300px);
   display: flex;
@@ -851,7 +851,7 @@ section {
 .contact-form-card {
   background: #fff;
   border-radius: 18px;
-  padding: 30px 32px;
+  padding: 20px 28px 16px;
   box-shadow: 0 10px 30px rgba(11, 31, 58, 0.06);
   border: 1px solid rgba(11, 31, 58, 0.04);
 }
@@ -867,7 +867,7 @@ section {
 .contact-form-card textarea,
 .contact-form-card select {
   width: 100%;
-  padding: 10px 14px;
+  padding: 8px 12px;
   border: 1px solid rgba(11, 31, 58, 0.15);
   border-radius: 8px;
   font-size: 14px;
@@ -875,7 +875,7 @@ section {
   color: var(--navy);
   outline: none;
   transition: border-color 0.2s;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
 }
 
 .contact-form-card input::placeholder,
@@ -891,13 +891,13 @@ section {
 
 .contact-form-card textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 50px;
 }
 
 .contact-form-card .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: 8px;
   margin-bottom: 0;
 }
 
@@ -907,13 +907,13 @@ section {
   background: var(--navy);
   color: #fff;
   font-weight: 600;
-  font-size: 15px;
-  padding: 12px;
+  font-size: 14px;
+  padding: 10px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-top: 6px;
+  margin-top: 0;
   font-family: 'Poppins', sans-serif;
 }
 
