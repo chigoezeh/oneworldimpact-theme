@@ -27,10 +27,10 @@
         $footer_wordmark = get_theme_mod('footer_logo_wordmark', get_template_directory_uri() . '/assets/images/OWI-One-Line.png');
         ?>
         <a href='<?php echo esc_url(home_url('/')); ?>'>
-          <img src='<?php echo esc_url($footer_icon); ?>' alt='<?php bloginfo('name'); ?> icon' style='height:56px'>
+          <img src='<?php echo esc_url($footer_icon); ?>' alt='<?php bloginfo('name'); ?> icon' class='footer-logo-icon'>
         </a>
         <a href='<?php echo esc_url(home_url('/')); ?>'>
-          <img src='<?php echo esc_url($footer_wordmark); ?>' alt='<?php bloginfo('name'); ?> wordmark' style='height:72px'>
+          <img src='<?php echo esc_url($footer_wordmark); ?>' alt='<?php bloginfo('name'); ?> wordmark' class='footer-logo-wordmark'>
         </a>
       </div>
       <p style='max-width:420px;margin-top:18px'><?php echo esc_html(get_theme_mod('footer_description', 'Transforming visionary community projects into sustainable, accountable, and life-changing realities across the globe.')); ?></p>

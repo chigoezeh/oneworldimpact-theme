@@ -809,8 +809,12 @@ section {
   display: block;
 }
 
-.footer .logo-wrap img:nth-child(2) {
-  height: 48px !important;
+.footer-logo-icon {
+  height: 80px !important;
+}
+
+.footer-logo-wordmark {
+  height: 72px !important;
 }
 
 .footer .logo-wrap {
@@ -1115,6 +1119,15 @@ section {
     gap: 30px;
   }
   
+  /* Footer logos - medium size on tablet */
+  .footer-logo-icon {
+    height: 50px !important;
+  }
+  
+  .footer-logo-wordmark {
+    height: 55px !important;
+  }
+  
   .footer-bottom {
     flex-direction: column;
     gap: 10px;
@@ -1263,5 +1276,14 @@ body.menu-open {
   
   .leader-photo {
     height: 280px;
+  }
+  
+  /* Footer logos - smaller on mobile */
+  .footer-logo-icon {
+    height: 35px !important;
+  }
+  
+  .footer-logo-wordmark {
+    height: 38px !important;
   }
 }
