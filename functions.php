@@ -1335,6 +1335,17 @@ function oneworldimpact_customize_register($wp_customize) {
         'type'     => 'textarea',
     ));
     
+    $wp_customize->add_setting('pillar1_icon', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'pillar1_icon', array(
+        'label'       => __('Pillar 1 Icon (Optional)', 'oneworldimpact'),
+        'section'     => 'pillars_section',
+        'settings'    => 'pillar1_icon',
+        'description' => __('Upload a custom icon image. Leave empty to use default SVG icon.', 'oneworldimpact'),
+    )));
+    
     // Pillar 2
     $wp_customize->add_setting('pillar2_title', array(
         'default'           => 'Execution platform capable of scale',
@@ -1355,6 +1366,17 @@ function oneworldimpact_customize_register($wp_customize) {
         'section'  => 'pillars_section',
         'type'     => 'textarea',
     ));
+    
+    $wp_customize->add_setting('pillar2_icon', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'pillar2_icon', array(
+        'label'       => __('Pillar 2 Icon (Optional)', 'oneworldimpact'),
+        'section'     => 'pillars_section',
+        'settings'    => 'pillar2_icon',
+        'description' => __('Upload a custom icon image. Leave empty to use default SVG icon.', 'oneworldimpact'),
+    )));
     
     // Pillar 3
     $wp_customize->add_setting('pillar3_title', array(
@@ -1377,6 +1399,17 @@ function oneworldimpact_customize_register($wp_customize) {
         'type'     => 'textarea',
     ));
     
+    $wp_customize->add_setting('pillar3_icon', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'pillar3_icon', array(
+        'label'       => __('Pillar 3 Icon (Optional)', 'oneworldimpact'),
+        'section'     => 'pillars_section',
+        'settings'    => 'pillar3_icon',
+        'description' => __('Upload a custom icon image. Leave empty to use default SVG icon.', 'oneworldimpact'),
+    )));
+    
     // Pillar 4
     $wp_customize->add_setting('pillar4_title', array(
         'default'           => 'Expert discipline within a strategic vertical',
@@ -1397,6 +1430,17 @@ function oneworldimpact_customize_register($wp_customize) {
         'section'  => 'pillars_section',
         'type'     => 'textarea',
     ));
+    
+    $wp_customize->add_setting('pillar4_icon', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'pillar4_icon', array(
+        'label'       => __('Pillar 4 Icon (Optional)', 'oneworldimpact'),
+        'section'     => 'pillars_section',
+        'settings'    => 'pillar4_icon',
+        'description' => __('Upload a custom icon image. Leave empty to use default SVG icon.', 'oneworldimpact'),
+    )));
     
     // News Section
     $wp_customize->add_section('news_section', array(

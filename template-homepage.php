@@ -150,28 +150,52 @@ $show_hero = get_theme_mod('show_hero_section', true);
   <div class='pillars'>
     <div class='pillar'>
       <div class='icon-shell'>
-        <svg viewBox='0 0 64 64'><path d='M8 56h48 M12 56V36a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v20 M24 56V24a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v32 M36 56V12a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v44 M56 48l6 6'/><circle cx='50' cy='42' r='8'/></svg>
+        <?php 
+        $pillar1_icon = get_theme_mod('pillar1_icon');
+        if ($pillar1_icon) : ?>
+          <img src='<?php echo esc_url($pillar1_icon); ?>' alt='<?php echo esc_attr(get_theme_mod('pillar1_title', 'Alignment')); ?>'>
+        <?php else : ?>
+          <svg viewBox='0 0 64 64'><path d='M8 56h48 M12 56V36a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v20 M24 56V24a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v32 M36 56V12a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v44 M56 48l6 6'/><circle cx='50' cy='42' r='8'/></svg>
+        <?php endif; ?>
       </div>
       <h4><?php echo esc_html(get_theme_mod('pillar1_title', 'Alignment')); ?></h4>
       <p><?php echo esc_html(get_theme_mod('pillar1_text', 'We align sovereign priorities, community needs, funding structures, and implementation pathways from the start.')); ?></p>
     </div>
     <div class='pillar'>
       <div class='icon-shell'>
-        <svg viewBox='0 0 64 64'><circle cx='32' cy='24' r='6'/><rect x='8' y='4' width='16' height='16' rx='1'/><rect x='40' y='4' width='16' height='16' rx='1'/><path d='M22 42a10 10 0 0 1 20 0 M12 8l8 8 M20 8l-8 8 M44 12l4 4 6-8 M26 36v-8a4 4 0 0 0-4-4h-2 M22 28l-4-4 4-4 M38 36v-8a4 4 0 0 1 4-4h2 M42 20l4 4-4 4'/></svg>
+        <?php 
+        $pillar2_icon = get_theme_mod('pillar2_icon');
+        if ($pillar2_icon) : ?>
+          <img src='<?php echo esc_url($pillar2_icon); ?>' alt='<?php echo esc_attr(get_theme_mod('pillar2_title', 'Execution platform capable of scale')); ?>'>
+        <?php else : ?>
+          <svg viewBox='0 0 64 64'><circle cx='32' cy='24' r='6'/><rect x='8' y='4' width='16' height='16' rx='1'/><rect x='40' y='4' width='16' height='16' rx='1'/><path d='M22 42a10 10 0 0 1 20 0 M12 8l8 8 M20 8l-8 8 M44 12l4 4 6-8 M26 36v-8a4 4 0 0 0-4-4h-2 M22 28l-4-4 4-4 M38 36v-8a4 4 0 0 1 4-4h2 M42 20l4 4-4 4'/></svg>
+        <?php endif; ?>
       </div>
       <h4><?php echo esc_html(get_theme_mod('pillar2_title', 'Execution platform capable of scale')); ?></h4>
       <p><?php echo esc_html(get_theme_mod('pillar2_text', 'Our platform combines project controls, compliance, reporting, and stakeholder coordination for disciplined delivery.')); ?></p>
     </div>
     <div class='pillar'>
       <div class='icon-shell'>
-        <svg viewBox='0 0 64 64'><circle cx='32' cy='32' r='28'/><circle cx='32' cy='32' r='16'/><circle cx='32' cy='32' r='6'/><path d='M32 4v8 M32 52v8 M4 32h8 M52 32h8 M28 32l3 3 6-6'/></svg>
+        <?php 
+        $pillar3_icon = get_theme_mod('pillar3_icon');
+        if ($pillar3_icon) : ?>
+          <img src='<?php echo esc_url($pillar3_icon); ?>' alt='<?php echo esc_attr(get_theme_mod('pillar3_title', 'Capability, experience, track record & trust')); ?>'>
+        <?php else : ?>
+          <svg viewBox='0 0 64 64'><circle cx='32' cy='32' r='28'/><circle cx='32' cy='32' r='16'/><circle cx='32' cy='32' r='6'/><path d='M32 4v8 M32 52v8 M4 32h8 M52 32h8 M28 32l3 3 6-6'/></svg>
+        <?php endif; ?>
       </div>
       <h4><?php echo esc_html(get_theme_mod('pillar3_title', 'Capability, experience, track record & trust')); ?></h4>
       <p><?php echo esc_html(get_theme_mod('pillar3_text', 'We bring technical stewardship, institutional discipline, and trusted partnerships across complex multi-stakeholder environments.')); ?></p>
     </div>
     <div class='pillar'>
       <div class='icon-shell'>
-        <svg viewBox='0 0 64 64'><path d='M16 16h32a8 8 0 0 1 0 16h-32a8 8 0 0 0 0 16h32 M14 16h4 M16 14l2 2-2 2 M45 48l2 2 4-4'/><circle cx='16' cy='16' r='6'/><circle cx='48' cy='48' r='6'/><circle cx='36' cy='16' r='2'/><circle cx='24' cy='32' r='2'/></svg>
+        <?php 
+        $pillar4_icon = get_theme_mod('pillar4_icon');
+        if ($pillar4_icon) : ?>
+          <img src='<?php echo esc_url($pillar4_icon); ?>' alt='<?php echo esc_attr(get_theme_mod('pillar4_title', 'Expert discipline within a strategic vertical')); ?>'>
+        <?php else : ?>
+          <svg viewBox='0 0 64 64'><path d='M16 16h32a8 8 0 0 1 0 16h-32a8 8 0 0 0 0 16h32 M14 16h4 M16 14l2 2-2 2 M45 48l2 2 4-4'/><circle cx='16' cy='16' r='6'/><circle cx='48' cy='48' r='6'/><circle cx='36' cy='16' r='2'/><circle cx='24' cy='32' r='2'/></svg>
+        <?php endif; ?>
       </div>
       <h4><?php echo esc_html(get_theme_mod('pillar4_title', 'Expert discipline within a strategic vertical')); ?></h4>
       <p><?php echo esc_html(get_theme_mod('pillar4_text', 'Sector-specific expertise enables strong planning, credible execution, and measurable outcomes within defined development priorities.')); ?></p>

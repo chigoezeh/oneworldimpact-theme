@@ -410,6 +410,13 @@ section {
   stroke-linejoin: round;
 }
 
+.icon-shell img {
+  width: 86px;
+  height: 86px;
+  object-fit: contain;
+  display: block;
+}
+
 .pillar h4 {
   margin: 0 0 8px;
   font-size: 18px;
