@@ -228,10 +228,20 @@ add_action('init', 'oneworldimpact_register_team_post_type', 0);
  */
 function oneworldimpact_custom_image_sizes() {
     add_image_size('news-card', 600, 220, true);
-    add_image_size('leader-photo', 400, 320, array('center', 'top')); // Crop from top to preserve faces
+    add_image_size('leader-photo', 454, 681, array('center', 'top')); // 2:3 ratio (proportional to 682x1023)
     add_image_size('about-visual', 800, 420, true);
 }
 add_action('after_setup_theme', 'oneworldimpact_custom_image_sizes');
+
+/**
+ * Add custom image sizes to media uploader for selection
+ */
+function oneworldimpact_custom_image_sizes_choose($sizes) {
+    return array_merge($sizes, array(
+        'leader-photo' => __('Team Member Photo (454x681)', 'oneworldimpact'),
+    ));
+}
+add_filter('image_size_names_choose', 'oneworldimpact_custom_image_sizes_choose');
 
 /**
  * Add Team Member Meta Box

@@ -686,7 +686,7 @@ section {
 }
 
 .leader-photo {
-  height: 320px;
+  height: 480px;
   background: #eef2f6;
   flex-shrink: 0;
   overflow: hidden;
@@ -1282,7 +1282,7 @@ body.menu-open {
   }
   
   .leader-photo {
-    height: 280px;
+    height: 400px;
   }
   
   /* Footer logos - smaller on mobile */
