@@ -1,0 +1,24 @@
+/*
+Theme Name: One World Impact
+Theme URI: https://oneworldimpact.org
+Author: Chigozie Ezeh
+Author URI: https://www.github.com/chigoezeh
+Description: A custom WordPress theme for One World Impact - transforming visionary community projects into sustainable, accountable, and life-changing realities across the globe.
+Version: 1.0.1
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 8.0
+License: MIT License
+License URI: https://opensource.org/licenses/MIT
+Text Domain: oneworldimpact
+Tags: custom-template, full-width-template, one-column, accessibility-ready, custom-colors, custom-menu, featured-images, threaded-comments, translation-ready
+
+One World Impact WordPress Theme, Copyright 2026 Chigozie Ezeh
+One World Impact is distributed under the terms of the MIT License.
+*/
+
+/*
+This theme uses a separate stylesheet for all visual styles.
+Main styles are loaded from assets/css/main.css via functions.php
+This file contains only the theme header information required by WordPress.
+*/
